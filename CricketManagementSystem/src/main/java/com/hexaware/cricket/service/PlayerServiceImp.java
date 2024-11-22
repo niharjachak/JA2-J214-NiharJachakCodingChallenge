@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hexaware.cricket.dto.PlayerDto;
 import com.hexaware.cricket.entity.Player;
 import com.hexaware.cricket.exceptions.PlayerNotFoundException;
 import com.hexaware.cricket.repository.IPlayerRepository;
@@ -19,22 +20,31 @@ public class PlayerServiceImp  implements IPlayerService{
 	
 	
 	@Override
-	public Player addPlayer(Player player) {
+	public Player addPlayer(PlayerDto playerdto) {
+		
+		Player player = new Player();
+		player.setPlayerName(playerdto.getPlayerName());
+		player.setJerseyNumber(playerdto.getJerseyNumber());
+		player.setRole(playerdto.getRole());
+		player.setTotalMatches(playerdto.getTotalMatches());
+		player.setTeamName(playerdto.getTeamName());
+		player.setState(playerdto.getState());
+		player.setDescription(playerdto.getDescription());
 		
 		return repo.save( player);
 	}
 
 	@Override
-	public Player updatePlayer(int playerId, Player player) {
+	public Player updatePlayer(int playerId, PlayerDto player) {
 	       
 		Player existplayer = getPlayerById(playerId);
-	        player.setPlayerName(player.getPlayerName());
-	        player.setJerseyNumber(player.getJerseyNumber());
-	        player.setRole(player.getRole());
-	        player.setTotalMatches(player.getTotalMatches());
-	        player.setTeamName(player.getTeamName());
-	        player.setState(player.getState());
-	        player.setDescription(player.getDescription());
+	        existplayer.setPlayerName(player.getPlayerName());
+	        existplayer.setJerseyNumber(player.getJerseyNumber());
+	        existplayer.setRole(player.getRole());
+	        existplayer.setTotalMatches(player.getTotalMatches());
+	        existplayer.setTeamName(player.getTeamName());
+	        existplayer.setState(player.getState());
+	        existplayer.setDescription(player.getDescription());
 	        
 	        return repo.save(existplayer);
 	    }
