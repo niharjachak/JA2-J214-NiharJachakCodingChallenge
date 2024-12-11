@@ -1,0 +1,72 @@
+<!-- app.component.html -->
+<h2 class="text-center sm-4">Add A New Player</h2>
+
+<div class="container col sm-5">
+  <div class="form-container">
+    
+    <form #playerForm="ngForm" (ngSubmit)="addPlayer(playerForm.value)" novalidate>
+      <div class="form-group">
+        <label for="playerName">Player Name</label>
+        <input type="text" id="playerName" class="form-control" name="playerName" ngModel required minlength="2" maxlength="50" #playerName="ngModel" />
+        <div *ngIf="playerName.invalid && playerName.touched" class="text-danger">
+          <small *ngIf="playerName.errors?.['required']">Player Name is required.</small>
+          <small *ngIf="playerName.errors?.['minlength']">Player Name must be at least 2 characters long.</small>
+          <small *ngIf="playerName.errors?.['maxlength']">Player Name must be at most 50 characters long.</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="jerseyNumber">Jersey Number</label>
+        <input type="number" id="jerseyNumber" class="form-control" name="jerseyNumber" ngModel required #jerseyNumber="ngModel" />
+        <div *ngIf="jerseyNumber.invalid && jerseyNumber.touched" class="text-danger">
+          <small *ngIf="jerseyNumber.errors?.['required']">Jersey Number is required.</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="role">Role</label>
+        <input type="text" id="role" class="form-control" name="role" ngModel required #role="ngModel" />
+        <div *ngIf="role.invalid && role.touched" class="text-danger">
+          <small *ngIf="role.errors?.['required']">Role is required.</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="totalMatches">Total Matches</label>
+        <input type="number" id="totalMatches" class="form-control" name="totalMatches" ngModel required #totalMatches="ngModel" />
+        <div *ngIf="totalMatches.invalid && totalMatches.touched" class="text-danger">
+          <small *ngIf="totalMatches.errors?.['required']">Total Matches is required.</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="teamName">Team Name</label>
+        <input type="text" id="teamName" class="form-control" name="teamName" ngModel required #teamName="ngModel" />
+        <div *ngIf="teamName.invalid && teamName.touched" class="text-danger">
+          <small *ngIf="teamName.errors?.['required']">Team Name is required.</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="state">Country/State</label>
+        <input type="text" id="state" class="form-control" name="state" ngModel required #state="ngModel" />
+        <div *ngIf="state.invalid && state.touched" class="text-danger">
+          <small *ngIf="state.errors?.['required']">Country/State is required.</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" class="form-control" name="description" ngModel maxlength="500" #description="ngModel"></textarea>
+        <div *ngIf="description.invalid && description.touched" class="text-danger">
+          <small *ngIf="description.errors?.['maxlength']">Description cannot exceed 500 characters.</small>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="text-center">
+        <button type="submit" class="btn btn-success btn-lg" [disabled]="playerForm.invalid">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

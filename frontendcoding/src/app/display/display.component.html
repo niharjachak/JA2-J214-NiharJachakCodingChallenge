@@ -1,0 +1,39 @@
+
+
+<h2>Display PlayersInformation</h2>
+
+
+<div class="card">
+    <div class="card-header bg-primary text-white">
+    </div>
+    <div class="card-body">
+      <button class="btn btn-success mb-3" (click)="getAllPlayers()">View Players</button>
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th>ID</th>
+            <th>Player Name</th>
+            <th>Jersey Number</th>
+            <th>Role</th>
+            <!-- <th>Total Matches</th>
+            <th>Team Name</th>
+            <th>State</th>
+            <th>Description</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let player of playerList">
+            <td>{{ player.playerId }}</td>
+            <td>{{ player.playerName }}</td>
+            <td>{{ player.jerseyNumber }}</td>
+            <td>{{ player.role }}</td>
+            <!-- <td>{{ player.totalMatches }}</td>
+            <td>{{ player.teamName }}</td>
+            <td>{{ player.state }}</td>
+            <td>{{ player.description }}</td> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
