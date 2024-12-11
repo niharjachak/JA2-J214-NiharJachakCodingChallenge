@@ -28,4 +28,11 @@ export class DisplayComponent {
     );
   }
 
+  getAllPlayersSorted(){
+    this.service.getAllPlayersSorted().subscribe(
+      (input)=>{
+        this.playerList=input;
+      }
+    );
+  }
 }

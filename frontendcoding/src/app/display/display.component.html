@@ -1,15 +1,17 @@
 
-
-<h2>Display PlayersInformation</h2>
-
-
 <div class="card">
     <div class="card-header bg-primary text-white">
     </div>
     <div class="card-body">
-      <button class="btn btn-success mb-3" (click)="getAllPlayers()">View Players</button>
+    
+      <div class="button-group">
+        <button class="btn btn-success col  md-3 mb-3 " (click)="getAllPlayers()">View Players</button>
+        <button class="btn btn-success  col md-3 mb-3 " (click)="getAllPlayersSorted()">Sort Them</button>
+   
+      </div>
+
       <table class="table table-bordered table-striped">
-        <thead class="thead-dark">
+        <thead class="thead-light">
           <tr>
             <th>ID</th>
             <th>Player Name</th>
@@ -36,4 +38,3 @@
       </table>
     </div>
   </div>
-  

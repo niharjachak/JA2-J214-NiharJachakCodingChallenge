@@ -26,5 +26,8 @@ export class PlayerService {
     return this.http.get<Players[]>(`${this.baseUrl}/getAll`);
   }
 
+  getAllPlayersSorted():Observable<Players[]>{
+    return this.http.get<Players[]>(`${this.baseUrl}/getAllSorted`);
+  }
 
 }
